@@ -1,4 +1,5 @@
 import './App.css'
+import AddTodo from './components/addTodo'
 import ProfileDetails from './components/profileDetails'
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   return (
     <>
       <ProfileDetails userData={userData}/>
+      <AddTodo />
     </>
   )
 }
