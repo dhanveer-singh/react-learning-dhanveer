@@ -1,5 +1,6 @@
 import './App.css'
 import AddTodo from './components/addTodo'
+import Counter from './components/counter'
 import ProfileDetails from './components/profileDetails'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <ProfileDetails userData={userData}/>
+      <Counter />
       <AddTodo />
     </>
   )
