@@ -1,5 +1,7 @@
 import { useState } from 'react';
+
 import Swal from 'sweetalert2';
+
 import AddTodo from './addTodo';
 
 const TodoList = () => {
