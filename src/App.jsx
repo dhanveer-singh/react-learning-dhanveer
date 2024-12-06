@@ -1,8 +1,8 @@
-import './App.css'
-import Assignments from './components/assignments'
+import './App.css';
+import Assignments from './components/assignments';
 
 function App() {
-  return (<Assignments />)
+  return <Assignments />;
 }
 
-export default App
+export default App;

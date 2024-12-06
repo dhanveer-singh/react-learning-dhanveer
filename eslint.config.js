@@ -1,8 +1,9 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
+import js from '@eslint/js';
+import importPlugin from 'eslint-plugin-import'; // Moved before `eslint-plugin-react`
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import globals from 'globals';
 
 export default [
   { ignores: ['dist'] },
@@ -19,6 +20,7 @@ export default [
     },
     settings: { react: { version: '18.3' } },
     plugins: {
+      import: importPlugin, // Add the import plugin first
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
@@ -29,11 +31,30 @@ export default [
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
       'react/jsx-no-target-blank': 'off',
-      "react/prop-types": "off",
+      'react/prop-types': 'off',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
+      'import/order': [
+        'error',
+        {
+          groups: ['builtin', 'external', 'internal'],
+          pathGroups: [
+            {
+              pattern: 'react',
+              group: 'external',
+              position: 'before',
+            },
+          ],
+          pathGroupsExcludedImportTypes: ['react'],
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+        },
+      ],
     },
   },
-]
+];

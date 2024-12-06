@@ -1,7 +1,5 @@
 const AddTodo = () => {
-    return (
-        <div>AddTodo</div>
-    )
-}
+  return <div>AddTodo</div>;
+};
 
-export default AddTodo
+export default AddTodo;

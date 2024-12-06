@@ -1,8 +1,5 @@
-# React + Vite
+# React Learning
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is set up with ESLint, Prettier, TypeScript, and TailwindCSS to provide a smooth development experience. The configuration ensures proper code formatting, linting, and coding standards.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Run Tailwind : npx tailwindcss -i ./src/styles/index.css -o ./src/styles/global.css --watch
