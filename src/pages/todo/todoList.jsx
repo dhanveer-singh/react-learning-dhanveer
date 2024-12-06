@@ -6,9 +6,18 @@ import AddTodo from './addTodo';
 
 const TodoList = () => {
   const [tasks, setTasks] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
 
   const addTask = (text) => {
     setTasks([...tasks, { text, completed: false }]);
+  };
+
+  const updateTask = (text) => {
+    const updatedTasks = tasks.map((task, i) =>
+      i === editIndex ? { ...task, text } : task
+    );
+    setTasks(updatedTasks);
+    setEditIndex(null); // Reset edit state after update
   };
 
   const toggleTask = (index) => {
@@ -36,11 +45,15 @@ const TodoList = () => {
   };
 
   return (
-    <div className='font-sans text-center bg-gray-100 p-6 max-w-lg mx-auto mt-12 rounded-lg shadow-md'>
+    <div className='font-sans text-center bg-gray-100 p-6 max-w-2xl mx-auto mt-12 rounded-lg shadow-md'>
       <header className='mb-6'>
         <h1 className='text-3xl font-black text-gray-900'>To-Do List</h1>
       </header>
-      <AddTodo onAddTask={addTask} />
+      <AddTodo
+        onAddTask={addTask}
+        onUpdateTask={updateTask}
+        taskToEdit={editIndex !== null ? tasks[editIndex] : null} // Pass task data if editing
+      />
       {tasks.length > 0 ? (
         <table className='w-full text-left bg-white shadow-md rounded-lg'>
           <thead>
@@ -72,8 +85,16 @@ const TodoList = () => {
                 </td>
                 <td className='px-4 py-2'>
                   <button
+                    onClick={() => {
+                      setEditIndex(index);
+                    }}
+                    className='px-3 py-1 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'
+                  >
+                    Edit
+                  </button>
+                  <button
                     onClick={() => deleteTask(index)}
-                    className='px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400'
+                    className='ml-2 px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400'
                   >
                     Delete
                   </button>
