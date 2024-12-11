@@ -4,6 +4,7 @@ import App from '@/App';
 import CommonLayout from '@/layouts/commonLayout';
 import Counter from '@/pages/counter/counter';
 import Index from '@/pages/products';
+import Cart from '@/pages/products/cart';
 import ProfileDetails from '@/pages/profile/profileDetails';
 import TodoList from '@/pages/todo/todoList';
 
@@ -37,6 +38,10 @@ const AppRoutes = createBrowserRouter([
       {
         path: '/products',
         element: <Index />,
+      },
+      {
+        path: '/cart',
+        element: <Cart />,
       },
     ],
   },
