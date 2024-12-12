@@ -1,10 +1,13 @@
-const ProductCard = ({ image, title, description, price }) => {
+import { useState } from 'react';
+
+const ProductCard = ({ product, onAddToCart }) => {
+  const [qty, setQty] = useState(1);
   return (
     <div className='max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden'>
       <a href='#'>
         <img
           className='rounded-t-lg transform transition-transform duration-300 hover:scale-105'
-          src={image}
+          src={product?.image}
           alt='Product'
         />
       </a>
@@ -13,15 +16,15 @@ const ProductCard = ({ image, title, description, price }) => {
           {new Intl.NumberFormat('en-IN', {
             style: 'currency',
             currency: 'INR',
-          }).format(price)}
+          }).format(product?.price)}
         </p>
         <a href='#'>
           <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-            {title}
+            {product?.title}
           </h5>
         </a>
         <p className='mb-4 font-normal text-gray-700 dark:text-gray-400 line-clamp-4'>
-          {description}
+          {product?.description}
         </p>
         <div className='flex justify-between items-center'>
           <form className='max-w-xs'>
@@ -29,6 +32,7 @@ const ProductCard = ({ image, title, description, price }) => {
               <button
                 type='button'
                 className='flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none'
+                onClick={() => setQty((prev) => Math.max(1, prev - 1))}
               >
                 <svg
                   className='w-2.5 h-2.5 text-gray-900 dark:text-white'
@@ -50,12 +54,13 @@ const ProductCard = ({ image, title, description, price }) => {
                 type='text'
                 className='flex-shrink-0 text-gray-900 dark:text-white border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center'
                 placeholder=''
-                value={0}
+                value={qty}
                 readOnly
               />
               <button
                 type='button'
                 className='flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none'
+                onClick={() => setQty((prev) => Math.max(1, prev + 1))}
               >
                 <svg
                   className='w-2.5 h-2.5 text-gray-900 dark:text-white'
@@ -76,12 +81,12 @@ const ProductCard = ({ image, title, description, price }) => {
             </div>
           </form>
           <div className='flex space-x-2'>
-            <button className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
+            <button
+              className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+              onClick={() => onAddToCart({ ...product, qty })}
+            >
               Add To Item
             </button>
-            {/* <button className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'>
-      Remove Item
-    </button> */}
           </div>
         </div>
       </div>

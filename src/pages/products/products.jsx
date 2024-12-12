@@ -1,20 +1,17 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 
 import ProductCard from '@/components/productCard';
-import { items } from '@/mockdata/products';
+import { ProductsContext } from '@/context/productsContext';
 
 const Products = () => {
-  const [productData] = useState(items);
-
+  const { products, addToCart } = useContext(ProductsContext);
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8 mb-8'>
-      {productData.map((product, index) => (
+      {products.map((product) => (
         <ProductCard
-          key={index}
-          image={product?.image}
-          title={product?.title}
-          description={product?.description}
-          price={product?.price}
+          key={product.id}
+          product={product}
+          onAddToCart={addToCart}
         />
       ))}
     </div>
