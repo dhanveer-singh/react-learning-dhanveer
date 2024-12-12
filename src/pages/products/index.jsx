@@ -8,8 +8,8 @@ const Index = () => {
     <>
       <ProductsProvider>
         <CartBar />
-        <Cart />
         <Products />
+        <Cart />
       </ProductsProvider>
     </>
   );
