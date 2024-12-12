@@ -7,7 +7,7 @@ export const items = [
     description:
       'Titanium design with larger 15.9 cm (6.3″) Super Retina XDR display, footnote 1 durable, latest-generation Ceramic Shield, Action button, and USB-C with USB 3 speeds footnote 2',
     price: 119900,
-    qty: 1,
+    qty: 0,
   },
   {
     id: 102,
@@ -17,7 +17,7 @@ export const items = [
     description:
       'Titanium design with larger 17.4 cm (6.9″) Super Retina XDR display, footnote 1 durable, latest-generation Ceramic Shield, Action button, and USB-C with USB 3 speeds footnote 2',
     price: 144900,
-    qty: 1,
+    qty: 0,
   },
   {
     id: 103,
@@ -27,7 +27,7 @@ export const items = [
     description:
       '15.5 cm (6.1″) aerospace-grade aluminium design footnote 1 with durable, latest-generation Ceramic Shield front, Action button and USB-C',
     price: 79900,
-    qty: 1,
+    qty: 0,
   },
   {
     id: 104,
@@ -37,6 +37,6 @@ export const items = [
     description:
       '17.0 cm (6.7″) aerospace-grade aluminium design footnote 1 with durable, latest-generation Ceramic Shield front, Action button and USB-C',
     price: 89900,
-    qty: 1,
+    qty: 0,
   },
 ];
