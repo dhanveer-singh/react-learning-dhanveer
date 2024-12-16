@@ -10,6 +10,7 @@ const Assignments = () => {
       description:
         'The goal of this assignment is to understand how to pass data between React components using props. You will create a React application where a parent component passes user profile details to a child component for display. This assignment will help you become familiar with the core concept of props and how components interact in a React application.',
       checked: true,
+      status: "Completed"
     },
     {
       path: '/counter',
@@ -17,6 +18,7 @@ const Assignments = () => {
       description:
         'The counter will demonstrate how to manage and update state in a functional component. You will learn how to increment, decrement, and display the counter value, giving you a foundational understanding of state management in React.',
       checked: true,
+      status: "Completed"
     },
     {
       path: '/todolist',
@@ -24,6 +26,7 @@ const Assignments = () => {
       description:
         'In this assignment, you will create a simple to-do app where you will practice passing data as props from a parent component to its child component. The parent component will manage the state of the to-do list, while the child component will display the individual to-do items. This will help you understand how data flows within a component hierarchy in a React (or similar) application.',
       checked: false,
+      status: "Completed"
     },
     {
       path: '/products',
@@ -31,6 +34,7 @@ const Assignments = () => {
       description:
         'Create a product listing with an "Add to Cart" feature to understand useContext for state management. Initially, pass product data and functions as props from the parent to child components. Then, refactor using useContext to avoid prop drilling and manage shared state efficiently. This will help you compare props-based and context-based state management in React.',
       checked: false,
+      status: "Completed"
     },
   ];
 
@@ -69,15 +73,30 @@ const Assignments = () => {
             >
               {isExpanded ? 'Show Less' : 'Show More'}
             </button>
-            {assignment.checked ? (
-              <p className='mt-2 text-sm font-medium text-green-600'>
-                ✔ Assignment is checked.
+            <div className='mt-4'>
+              <p className='text-sm font-medium'>
+                Status:{' '}
+                <span
+                  className={`${assignment.status === 'Completed'
+                    ? 'text-green-600'
+                    : assignment.status === 'In Progress'
+                      ? 'text-yellow-600'
+                      : 'text-gray-600'
+                    }`}
+                >
+                  {assignment.status}
+                </span>
               </p>
-            ) : (
-              <p className='mt-2 text-sm font-medium text-red-600'>
-                ✘ Assignment is not checked.
-              </p>
-            )}
+              {assignment.checked ? (
+                <p className='mt-2 text-sm font-medium text-green-600'>
+                  ✔ Assignment is checked.
+                </p>
+              ) : (
+                <p className='mt-2 text-sm font-medium text-red-600'>
+                  ✘ Assignment is not checked.
+                </p>
+              )}
+            </div>
           </Link>
         );
       })}

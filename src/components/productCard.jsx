@@ -1,15 +1,32 @@
 import { useState } from 'react';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 const ProductCard = ({ product, onAddToCart }) => {
   const [qty, setQty] = useState(1);
+
   return (
     <div className='max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden'>
       <a href='#'>
-        <img
-          className='rounded-t-lg transform transition-transform duration-300 hover:scale-105'
-          src={product?.image}
-          alt='Product'
-        />
+        <Swiper
+          spaceBetween={10}
+          slidesPerView={1}
+          loop={true}
+          pagination={{ clickable: true,type: 'bullets' }}
+          className="product-slider"
+        >
+          {product.images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <img
+                className='rounded-t-lg transform transition-transform duration-300 hover:scale-105'
+                src={image}
+                alt={`Product Image ${index + 1}`}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </a>
       <div className='p-4'>
         <p className='text-sm text-gray-700 dark:text-gray-400 mb-1'>
@@ -53,14 +70,13 @@ const ProductCard = ({ product, onAddToCart }) => {
               <input
                 type='text'
                 className='flex-shrink-0 text-gray-900 dark:text-white border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center'
-                placeholder=''
                 value={qty}
                 readOnly
               />
               <button
                 type='button'
                 className='flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none'
-                onClick={() => setQty((prev) => Math.max(1, prev + 1))}
+                onClick={() => setQty((prev) => prev + 1)}
               >
                 <svg
                   className='w-2.5 h-2.5 text-gray-900 dark:text-white'

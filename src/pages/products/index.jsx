@@ -1,4 +1,3 @@
-import Cart from './cart';
 import CartBar from './cartBar';
 import Products from './products';
 import { ProductsProvider } from '@/context/productsContext';
@@ -9,7 +8,6 @@ const Index = () => {
       <ProductsProvider>
         <CartBar />
         <Products />
-        <Cart />
       </ProductsProvider>
     </>
   );

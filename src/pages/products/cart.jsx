@@ -2,7 +2,6 @@ import { useContext } from 'react';
 
 import { FiMinus, FiPlus } from 'react-icons/fi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
 
 import { ProductsContext } from '@/context/productsContext';
 
@@ -21,12 +20,6 @@ const Cart = () => {
   return (
     <div className='cart-container flex flex-col md:flex-row p-6 bg-white shadow-md rounded-lg'>
       <div className='cart-items w-full md:w-3/5 pr-6'>
-        <Link
-          to={'/products'}
-          className='px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400'
-        >
-          Back
-        </Link>
         <h2 className='mt-8  text-2xl font-semibold mb-4'>Your Cart</h2>
         {cartItems?.length === 0 ? (
           <p>Your cart is empty.</p>
@@ -40,7 +33,7 @@ const Cart = () => {
                 >
                   <div className='flex items-center'>
                     <img
-                      src={item?.image}
+                      src={item?.images[0]}
                       alt={item?.title}
                       className='w-16 h-16 object-cover rounded-md mr-4'
                     />
