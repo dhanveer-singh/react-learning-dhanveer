@@ -6,12 +6,8 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import { ProductsContext } from '@/context/productsContext';
 
 const Cart = () => {
-  const { cartItems, setCartItems, updateQuantity } =
+  const { cartItems, removeFromCart, updateQuantity } =
     useContext(ProductsContext);
-
-  const removeItem = (id) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
-  };
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.qty, 0);
@@ -63,7 +59,7 @@ const Cart = () => {
                     </span>
                     <button
                       className='text-red-500 py-2 px-3 rounded-lg bg-gray-200 hover:bg-gray-300'
-                      onClick={() => removeItem(item?.id)}
+                      onClick={() => removeFromCart(item?.id)}
                     >
                       <RiDeleteBin6Line />
                     </button>

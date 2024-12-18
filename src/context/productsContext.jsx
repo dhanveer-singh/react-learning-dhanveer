@@ -5,11 +5,22 @@ import { items } from '@/mockdata/products';
 export const ProductsContext = createContext(null);
 
 export const ProductsProvider = ({ children }) => {
-  const [products] = useState(items);
+  const [products, setProducts] = useState(() => {
+    const savedProducts = localStorage.getItem('products');
+    return savedProducts ? JSON.parse(savedProducts) : items;
+  });
   const [cartItems, setCartItems] = useState(() => {
     const savedCart = localStorage.getItem('cartItems');
     return savedCart ? JSON.parse(savedCart) : [];
   });
+
+  useEffect(() => {
+    localStorage.setItem('products', JSON.stringify(products));
+  }, [products]);
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const addToCart = (product) => {
     if (product.qty > 0) {
@@ -26,23 +37,53 @@ export const ProductsProvider = ({ children }) => {
       });
     }
   };
-  useEffect(() => {
-    console.log('Cart updated:', cartItems);
-  }, [cartItems]);
+  useEffect(() => { }, [cartItems]);
 
-  const updateQuantity = (id, increment) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
+  const updateQuantity = (id, updatedValue) => {
+    setProducts((prevProducts) => {
+      const updatedProducts = prevProducts.map((product) =>
+        product.id === id
+          ? { ...product, qty: Math.max((product.qty || 0) + updatedValue, 0) }
+          : product
+      );
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
+      return updatedProducts;
+    });
+
+    setCartItems((prevCartItems) => {
+      const updatedCartItems = prevCartItems.map((item) =>
         item.id === id
-          ? { ...item, qty: Math.max(1, item.qty + increment) }
+          ? { ...item, qty: Math.max((item.qty || 0) + updatedValue, 0) }
           : item
-      )
-    );
+      );
+      localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+      return updatedCartItems;
+    });
   };
 
+  const removeFromCart = (id) => {
+    setCartItems((prev) => {
+      const updatedCartItems = prev.filter((item) => item.id !== id);
+     
+      setProducts((prevProducts) => {
+        const updatedProducts = prevProducts.map((product) =>
+          product.id === id
+            ? { ...product, qty: 0 } 
+            : product
+        );
+       
+        localStorage.setItem('products', JSON.stringify(updatedProducts));
+        return updatedProducts;
+      });
+
+     
+      localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+      return updatedCartItems;
+    });
+  };
   return (
     <ProductsContext.Provider
-      value={{ products, cartItems, setCartItems, addToCart, updateQuantity }}
+      value={{ products, cartItems, setCartItems, addToCart, updateQuantity, removeFromCart }}
     >
       {children}
     </ProductsContext.Provider>

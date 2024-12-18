@@ -6,18 +6,18 @@ import DeleteConfirmation from '@/components/dialog/deleteConfirmation';
 const TodoList = () => {
   const [tasks, setTasks] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
-  
-  // This function will handle both functionality of add task and update task 
+
+  // This function will handle both functionality of add task and update task
   const handleTask = (taskData, editIndex = null) => {
     if (editIndex === null) {
-      setTasks([...tasks, { ...taskData, completed: false }])
+      setTasks([...tasks, { ...taskData, completed: false }]);
     } else {
       const updatedTask = [...tasks];
       updatedTask[editIndex] = { ...updatedTask[editIndex], ...taskData };
       setTasks(updatedTask);
-      setEditIndex(null)
+      setEditIndex(null);
     }
-  }
+  };
 
   const deleteTask = (index) => {
     setTasks(tasks.filter((_, i) => i !== index));
@@ -46,12 +46,15 @@ const TodoList = () => {
           </tr>
         </thead>
         <tbody>
-          {tasks.length > 0 ?
-            (tasks.map((task, index) => (
+          {tasks.length > 0 ? (
+            tasks.map((task, index) => (
               <tr
                 key={index}
-                className={`${task?.status === 'Completed' ? 'bg-gray-200 line-through text-gray-500' : ''
-                  }`}
+                className={`${
+                  task?.status === 'Completed'
+                    ? 'bg-gray-200 line-through text-gray-500'
+                    : ''
+                }`}
               >
                 <td className='px-4 py-2'>{index + 1}</td>
                 <td className='px-4 py-2'>{task?.text}</td>
@@ -68,16 +71,19 @@ const TodoList = () => {
                     Edit
                   </button>
                   <DeleteConfirmation
-                    onConfirmDelete={deleteTask}  // Pass the delete function
-                    taskIndex={index}  // Pass the task index
+                    onConfirmDelete={deleteTask} // Pass the delete function
+                    taskIndex={index} // Pass the task index
                   />
                 </td>
               </tr>
-            ))) : (
-              <tr>
-                <td className='text-gray-600 text-center py-4' colSpan={6}>No tasks yet. Start adding some!</td>
-              </tr>
-            )}
+            ))
+          ) : (
+            <tr>
+              <td className='text-gray-600 text-center py-4' colSpan={6}>
+                No tasks yet. Start adding some!
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

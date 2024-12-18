@@ -21,7 +21,7 @@ const DeleteConfirmation = ({ onConfirmDelete, taskIndex }) => {
   return (
     <button
       onClick={handleDeleteConfirmation}
-      className="ml-2 px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400"
+      className='ml-2 px-3 py-1 text-white bg-red-500 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400'
     >
       Delete
     </button>

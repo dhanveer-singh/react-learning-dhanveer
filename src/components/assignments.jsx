@@ -47,22 +47,22 @@ const Assignments = () => {
   };
   return (
     <div className='grid grid-cols-1 sm:grid-cols-3 justify-center gap-4 m-8'>
-      {assignmentData.map((assignment, index) => {
+      {assignmentData?.map((assignment, index) => {
         const isExpanded = expandedIndex === index;
         const previewLength = 100;
         return (
           <Link
             key={index}
-            to={assignment.path}
+            to={assignment?.path}
             className='block max-w-xl p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'
           >
             <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-              Assignment {index + 1}: {assignment.title}
+              Assignment {index + 1}: {assignment?.title}
             </h5>
             <p className='font-normal text-gray-700 dark:text-gray-400'>
               {isExpanded
-                ? assignment.description
-                : `${assignment.description.substring(0, previewLength)}...`}
+                ? assignment?.description
+                : `${assignment?.description?.substring(0, previewLength)}...`}
             </p>
             <button
               onClick={(e) => {
@@ -78,17 +78,17 @@ const Assignments = () => {
                 Status:{' '}
                 <span
                   className={`${
-                    assignment.status === 'Completed'
+                    assignment?.status === 'Completed'
                       ? 'text-green-600'
-                      : assignment.status === 'In Progress'
+                      : assignment?.status === 'In Progress'
                         ? 'text-yellow-600'
                         : 'text-gray-600'
                   }`}
                 >
-                  {assignment.status}
+                  {assignment?.status}
                 </span>
               </p>
-              {assignment.checked ? (
+              {assignment?.checked ? (
                 <p className='mt-2 text-sm font-medium text-green-600'>
                   ✔ Assignment is checked.
                 </p>

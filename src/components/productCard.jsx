@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { ProductsContext } from '@/context/productsContext';
 
 const ProductCard = ({ product, onAddToCart }) => {
-  const [qty, setQty] = useState(1);
+  const { cartItems, updateQuantity } = useContext(ProductsContext);
 
+  const isInCart = cartItems?.some((item) => item?.id === product?.id);
   return (
     <div className='max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden'>
       <a href='#'>
@@ -17,7 +20,7 @@ const ProductCard = ({ product, onAddToCart }) => {
           pagination={{ clickable: true, type: 'bullets' }}
           className='product-slider'
         >
-          {product.images.map((image, index) => (
+          {product?.images?.map((image, index) => (
             <SwiperSlide key={index}>
               <img
                 className='rounded-t-lg transform transition-transform duration-300 hover:scale-105'
@@ -49,7 +52,7 @@ const ProductCard = ({ product, onAddToCart }) => {
               <button
                 type='button'
                 className='flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none'
-                onClick={() => setQty((prev) => Math.max(1, prev - 1))}
+                onClick={() => updateQuantity(product?.id, -1)}
               >
                 <svg
                   className='w-2.5 h-2.5 text-gray-900 dark:text-white'
@@ -70,13 +73,13 @@ const ProductCard = ({ product, onAddToCart }) => {
               <input
                 type='text'
                 className='flex-shrink-0 text-gray-900 dark:text-white border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center'
-                value={qty}
+                value={product?.qty}
                 readOnly
               />
               <button
                 type='button'
                 className='flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none'
-                onClick={() => setQty((prev) => prev + 1)}
+                onClick={() => updateQuantity(product?.id, 1)}
               >
                 <svg
                   className='w-2.5 h-2.5 text-gray-900 dark:text-white'
@@ -99,9 +102,10 @@ const ProductCard = ({ product, onAddToCart }) => {
           <div className='flex space-x-2'>
             <button
               className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-              onClick={() => onAddToCart({ ...product, qty })}
+              onClick={() => onAddToCart({ ...product, product })}
+              disabled={isInCart}
             >
-              Add To Item
+              {isInCart ? 'Added' : 'Add To Cart'}
             </button>
           </div>
         </div>
