@@ -10,7 +10,7 @@ const Slider = ({ children }) => {
       slidesPerView={1}
       pagination={{ clickable: true }}
       modules={[Pagination]}
-      className="w-full h-64"
+      className='w-full h-64'
     >
       {children}
     </Swiper>

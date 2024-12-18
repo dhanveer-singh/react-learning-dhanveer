@@ -14,8 +14,8 @@ const ProductCard = ({ product, onAddToCart }) => {
           spaceBetween={10}
           slidesPerView={1}
           loop={true}
-          pagination={{ clickable: true,type: 'bullets' }}
-          className="product-slider"
+          pagination={{ clickable: true, type: 'bullets' }}
+          className='product-slider'
         >
           {product.images.map((image, index) => (
             <SwiperSlide key={index}>

@@ -1,7 +1,7 @@
 export const items = [
   {
     id: 101,
-    images:[
+    images: [
       'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16pro-digitalmat-gallery-3-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=1723843057832',
       'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16pro-digitalmat-gallery-3-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=1723843057832',
       'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16pro-digitalmat-gallery-3-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=1723843057832',
@@ -14,7 +14,7 @@ export const items = [
   },
   {
     id: 102,
-    images:[
+    images: [
       'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16promax-digitalmat-gallery-2-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=1723843667165',
       'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16promax-digitalmat-gallery-2-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=1723843667165',
       'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16promax-digitalmat-gallery-2-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=1723843667165',
@@ -27,7 +27,7 @@ export const items = [
   },
   {
     id: 103,
-    images:[
+    images: [
       'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16-digitalmat-gallery-1-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=1723669127470',
       'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16-digitalmat-gallery-1-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=1723669127470',
       'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16-digitalmat-gallery-1-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=1723669127470',
@@ -40,7 +40,7 @@ export const items = [
   },
   {
     id: 104,
-    images:[
+    images: [
       'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16plus-digitalmat-gallery-3-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=1723669964127',
       'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16plus-digitalmat-gallery-3-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=1723669964127',
       'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16plus-digitalmat-gallery-3-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=1723669964127',
