@@ -25,7 +25,7 @@ const Assignments = () => {
       title: 'Create a todo app',
       description:
         'In this assignment, you will create a simple to-do app where you will practice passing data as props from a parent component to its child component. The parent component will manage the state of the to-do list, while the child component will display the individual to-do items. This will help you understand how data flows within a component hierarchy in a React (or similar) application.',
-      checked: false,
+      checked: true,
       status: 'Completed',
     },
     {
@@ -33,6 +33,15 @@ const Assignments = () => {
       title: 'Product Listing and Add-to-Cart with useContext()',
       description:
         'Create a product listing with an "Add to Cart" feature to understand useContext for state management. Initially, pass product data and functions as props from the parent to child components. Then, refactor using useContext to avoid prop drilling and manage shared state efficiently. This will help you compare props-based and context-based state management in React.',
+      checked: true,
+      status: 'Completed',
+    },
+    {
+      path: '/form-validation',
+      title:
+        'Build a form using react-hook-form and implement validation with yup library',
+      description:
+        'In this assignment, you are required to create a user form using React Hook Form for efficient form handling. Integrate Yup to define and enforce validation rules for the form fields. Ensure the form includes features like real-time validation feedback, error messages for invalid inputs, and a submit button to handle form submission. This will help you understand how to combine React Hook Form and Yup to build robust and user-friendly forms.',
       checked: false,
       status: 'Completed',
     },

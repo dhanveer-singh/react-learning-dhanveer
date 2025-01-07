@@ -37,7 +37,7 @@ export const ProductsProvider = ({ children }) => {
       });
     }
   };
-  useEffect(() => { }, [cartItems]);
+  useEffect(() => {}, [cartItems]);
 
   const updateQuantity = (id, updatedValue) => {
     setProducts((prevProducts) => {
@@ -64,26 +64,30 @@ export const ProductsProvider = ({ children }) => {
   const removeFromCart = (id) => {
     setCartItems((prev) => {
       const updatedCartItems = prev.filter((item) => item.id !== id);
-     
+
       setProducts((prevProducts) => {
         const updatedProducts = prevProducts.map((product) =>
-          product.id === id
-            ? { ...product, qty: 0 } 
-            : product
+          product.id === id ? { ...product, qty: 0 } : product
         );
-       
+
         localStorage.setItem('products', JSON.stringify(updatedProducts));
         return updatedProducts;
       });
 
-     
       localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
       return updatedCartItems;
     });
   };
   return (
     <ProductsContext.Provider
-      value={{ products, cartItems, setCartItems, addToCart, updateQuantity, removeFromCart }}
+      value={{
+        products,
+        cartItems,
+        setCartItems,
+        addToCart,
+        updateQuantity,
+        removeFromCart,
+      }}
     >
       {children}
     </ProductsContext.Provider>

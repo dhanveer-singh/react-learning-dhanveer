@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from '@/App';
 import CommonLayout from '@/layouts/commonLayout';
 import Counter from '@/pages/counter/counter';
+import FormValidation from '@/pages/form-validation/formValidation';
 import Index from '@/pages/products';
 import Cart from '@/pages/products/cart';
 import ProfileDetails from '@/pages/profile/profileDetails';
@@ -42,6 +43,10 @@ const AppRoutes = createBrowserRouter([
       {
         path: '/cart',
         element: <Cart />,
+      },
+      {
+        path: '/form-validation',
+        element: <FormValidation />,
       },
     ],
   },
